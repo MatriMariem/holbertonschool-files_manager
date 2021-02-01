@@ -1,4 +1,4 @@
-const redis = require('redis');
+import redis from 'redis';
 
 class RedisClient {
   constructor() {
@@ -13,10 +13,11 @@ class RedisClient {
   }
   /* eslint-disable */
   async get(key) {
-    return await this.client.get(key, (err, val) => {
+    const val = await this.client.get(key, (err, val) => {
       if (err) { throw err; }
       return (val);
     });
+    return val;
   }
 
   async set(key, val, dur) {
@@ -32,4 +33,4 @@ class RedisClient {
 }
 
 const redisClient = new RedisClient();
-module.exports = redisClient;
+export default redisClient;
