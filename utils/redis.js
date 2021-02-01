@@ -11,9 +11,9 @@ class RedisClient {
   isAlive() {
     return this.client.connected;
   }
-
+  /* eslint-disable */
   async get(key) {
-    return this.client.get(key, (err, val) => {
+    return await this.client.get(key, (err, val) => {
       if (err) { throw err; }
       return (val);
     });
